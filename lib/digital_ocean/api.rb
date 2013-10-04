@@ -65,6 +65,13 @@ module DigitalOcean
         DigitalOcean::Resource::Domain.new(@faraday)
     end
 
+    # Access Events
+    # @see DigitalOcean::Resource::Event
+    # @return [DigitalOcean::Resource::Event]
+    def events
+      DigitalOcean::Resource::Event.new(@faraday)
+    end
+
     def default_faraday
       Faraday.new(:url => @base_url, :ssl => @ssl) do |faraday|
         faraday.use AuthenticationMiddleware, @client_id, @api_key
